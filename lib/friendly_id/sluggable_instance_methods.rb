@@ -101,12 +101,13 @@ module FriendlyId::SluggableInstanceMethods
       @most_recent_slug = nil
       slug_attributes = {:name => slug_text}
       if friendly_id_options[:scope]
-        scope = self.class.friendly_id_options[:scope] # originally: scope = send(friendly_id_options[:scope])
+        # scope = self.class.friendly_id_options[:scope] # originally: scope = send(friendly_id_options[:scope])
+        scope = send(friendly_id_options[:scope])
         slug_attributes[:scope] = scope.respond_to?(:to_param) ? scope.to_param : scope.to_s
       end
       # If we're renaming back to a previously used friendly_id, delete the
       # slug so that we can recycle the name without having to use a sequence.
-      #  ORIG: slugs.find(:all, :conditions => {:name => slug_text, :scope => scope}).each { |s| s.destroy }
+      #  ORIG slugs.find(:all, :conditions => {:name => slug_text, :scope => scope}).each { |s| s.destroy }
       slugs.find(:all, :conditions => {:name => slug_text, :scope => slug_attributes[:scope]}).each
       slug = slugs.build slug_attributes
       slug
