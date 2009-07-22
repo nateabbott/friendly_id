@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{friendly_id}
-  s.version = "2.1.4"
+  s.name = %q{nateabbott-friendly_id}
+  s.version = "2.1.5"
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Norman Clarke", "Adrian Mugnolo", "Emilio Tagua", "Nate Abbott"]
   s.date = %q{2009-06-03}
